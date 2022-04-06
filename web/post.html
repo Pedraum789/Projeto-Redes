@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <input type="text" id="id" name="id">
+        <input type="text" id="name" name="name">
+        <input type="text" id="valor" name="valor">
+        <button onclick="sendPost()">Enviar</button>
+    </form>
+
+    <script>
+        function sendPost(){
+            var id = document.querySelector("#id").value;
+            var name = document.querySelector("#name").value;
+            var valor = document.querySelector("#valor").value;
+            
+            let resquest = new XMLHttpRequest()
+            resquest.open("POST", "http://localhost:8080", false)
+            resquest.send({"id":id, "name":name, "valor": valor})
+
+            document.body.innerHTML = "<h2>" + "</h2>"
+        }
+    </script>
+
+</body>
+</html>
