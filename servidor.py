@@ -1,6 +1,5 @@
 import socket
-import json
-import post
+#from post import alteraLinha
 
 REQUESTS = {
     "GET": "/index.html", 
@@ -56,7 +55,7 @@ while True:
         elif split_request[0] == 'POST':
         
             response = "HTTP/1.1 200 OK\n\n" + content
-            post.alteraLinha("2", "Refrigerante", "2.50")
+            #alteraLinha("2", "Refrigerante", "2.50")
             
         elif split_request[0] == 'PUT':
             
@@ -68,9 +67,9 @@ while True:
             print("Comando não pode ser interpretado por esse servidor!")
             response = ("ERRO! Servidor não reconhece esse comando!").encode()
             connectionSocket.send(response)
+        connectionSocket.sendall(response.encode())
+
+        connectionSocket.close()
 
     except:
         pass
-    connectionSocket.sendall(response.encode())
-
-    connectionSocket.close()
