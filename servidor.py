@@ -1,5 +1,6 @@
 import socket
 import json
+import post
 
 REQUESTS = {
     "GET": "/index.html", 
@@ -55,6 +56,8 @@ while True:
     elif split_request[0] == 'POST':
         
         response = "HTTP/1.1 200 OK\n\n" + content
+        post.alteraLinha("2", "Refrigerante", "2.50")
+        
     elif split_request[0] == 'PUT':
         
         response = "HTTP/1.1 200 OK\n\n" + content
