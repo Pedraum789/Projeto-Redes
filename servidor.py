@@ -28,43 +28,45 @@ while True:
     request = connectionSocket.recv(1024).decode()
 
     split_request = request.split()
-    
-    if split_request[0] == 'GET':
-        
-        if split_request[1] == '/' or split_request[1] == REQUESTS['GET']:
-            fin = open("web" + REQUESTS['GET'])
-            content = fin.read()
-            fin.close()
-            response = "HTTP/1.1 200 OK\n\n" + content
-        elif split_request[1] == REQUESTS['POST']:
-            fin = open("web" + REQUESTS['POST'])
-            content = fin.read()
-            fin.close()
-            response = "HTTP/1.1 200 OK\n\n" + content
-        elif split_request[1] == REQUESTS['PUT']:
-            fin = open("web" + REQUESTS['PUT'])
-            content = fin.read()
-            fin.close()
-            response = "HTTP/1.1 200 OK\n\n" + content
-        elif split_request[1] == REQUESTS['DELETE']:
-            fin = open("web" + REQUESTS['DELETE'])
-            content = fin.read()
-            fin.close()
-            response = "HTTP/1.1 200 OK\n\n" + content
+    try:
+        if split_request[0] == 'GET':
+            
+            if split_request[1] == '/' or split_request[1] == REQUESTS['GET']:
+                fin = open("web" + REQUESTS['GET'])
+                content = fin.read()
+                fin.close()
+                response = "HTTP/1.1 200 OK\n\n" + content
+            elif split_request[1] == REQUESTS['POST']:
+                fin = open("web" + REQUESTS['POST'])
+                content = fin.read()
+                fin.close()
+                response = "HTTP/1.1 200 OK\n\n" + content
+            elif split_request[1] == REQUESTS['PUT']:
+                fin = open("web" + REQUESTS['PUT'])
+                content = fin.read()
+                fin.close()
+                response = "HTTP/1.1 200 OK\n\n" + content
+            elif split_request[1] == REQUESTS['DELETE']:
+                fin = open("web" + REQUESTS['DELETE'])
+                content = fin.read()
+                fin.close()
+                response = "HTTP/1.1 200 OK\n\n" + content
 
-    elif split_request[0] == 'POST':
-        
-        response = "HTTP/1.1 200 OK\n\n" + content
-    elif split_request[0] == 'PUT':
-        
-        response = "HTTP/1.1 200 OK\n\n" + content
-    elif split_request[0] == 'DELETE':
-        
-        response = "HTTP/1.1 200 OK\n\n" + content
-    else:
-        print("Comando não pode ser interpretado por esse servidor!")
-        response = ("ERRO! Servidor não reconhece esse comando!").encode()
-        connectionSocket.send(response)
+        elif split_request[0] == 'POST':
+            
+            response = "HTTP/1.1 200 OK\n\n" + content
+        elif split_request[0] == 'PUT':
+            
+            response = "HTTP/1.1 200 OK\n\n" + content
+        elif split_request[0] == 'DELETE':
+            
+            response = "HTTP/1.1 200 OK\n\n" + content
+        else:
+            print("Comando não pode ser interpretado por esse servidor!")
+            response = ("ERRO! Servidor não reconhece esse comando!").encode()
+            connectionSocket.send(response)
+    except:
+        pass
 
     connectionSocket.sendall(response.encode())
 
