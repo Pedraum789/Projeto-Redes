@@ -51,6 +51,7 @@ while True:
                 content = fin.read()
                 fin.close()
                 response = "HTTP/1.1 200 OK\n\n" + content
+                
 
         elif split_request[0] == 'POST':
         
@@ -63,6 +64,7 @@ while True:
         elif split_request[0] == 'DELETE':
             
             response = "HTTP/1.1 200 OK\n\n" + content
+            #delete.deletaArquivo()
         else:
             print("Comando não pode ser interpretado por esse servidor!")
             response = ("ERRO! Servidor não reconhece esse comando!").encode()
