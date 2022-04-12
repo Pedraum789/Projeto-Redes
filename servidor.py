@@ -1,5 +1,6 @@
 import socket
 import json
+import post
 
 REQUESTS = {
     "GET": "/index.html", 
@@ -53,8 +54,10 @@ while True:
                 response = "HTTP/1.1 200 OK\n\n" + content
 
         elif split_request[0] == 'POST':
-            
+        
             response = "HTTP/1.1 200 OK\n\n" + content
+            post.alteraLinha("2", "Refrigerante", "2.50")
+            
         elif split_request[0] == 'PUT':
             
             response = "HTTP/1.1 200 OK\n\n" + content
@@ -65,9 +68,9 @@ while True:
             print("Comando não pode ser interpretado por esse servidor!")
             response = ("ERRO! Servidor não reconhece esse comando!").encode()
             connectionSocket.send(response)
+
     except:
         pass
-
     connectionSocket.sendall(response.encode())
 
     connectionSocket.close()
