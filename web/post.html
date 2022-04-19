@@ -22,9 +22,7 @@
             
             let resquest = new XMLHttpRequest()
             resquest.open("POST", "http://localhost:8080", false)
-            resquest.send({"id":id, "name":name, "valor": valor})
-
-            document.body.innerHTML = "<h2>" + "</h2>"
+            resquest.send(JSON.stringify({"id":id, "name":name, "valor": valor}))
         }
     </script>
 
