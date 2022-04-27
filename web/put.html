@@ -16,10 +16,19 @@
     var fileReader = new FileReader();
     fileReader.onload = function(fileLoadedEvent){
         var textFromFileLoaded = fileLoadedEvent.target.result;
-        console.log(textFromFileLoaded)
-        let resquest = new XMLHttpRequest()
-        resquest.open("PUT", "http://localhost:8080", false)
-        resquest.send(textFromFileLoaded)
+
+        const toSend = {
+          name: fileToLoad.name,
+          content: fileLoadedEvent.target.result
+        }
+
+        const jsonString = JSON.stringify(toSend)
+        const xhr = new XMLHttpRequest()
+
+        xhr.open("PUT", "http://localhost:8080")
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.send(jsonString);
+
     };
 
     fileReader.readAsText(fileToLoad, "UTF-8");

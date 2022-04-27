@@ -34,8 +34,7 @@ while True:
 
     split_request = request.split()
     try:
-        if split_request[0] == 'GET':
-            
+        if split_request[0] == 'GET':            
             if split_request[1] == '/' or split_request[1] == REQUESTS['GET']:
                 fin = open("web" + REQUESTS['GET'])
                 content = fin.read()
@@ -55,32 +54,24 @@ while True:
                 fin = open("web" + REQUESTS['DELETE'])
                 content = fin.read()
                 fin.close()
-                response = "HTTP/1.1 200 OK\n\n" + content
-                
+                response = "HTTP/1.1 200 OK\n\n" + content                
 
         elif split_request[0] == 'POST':
             body = request.split('\r\n\r\n')
             if( len(body) > 1 ):
-                json = json.loads(body[1])
-                post.alteraLinha(json['id'], json['name'], json['valor'])
-                
-            response = "HTTP/1.1 200 OK\n\n" + content
+                body = json.loads(body[1])
+                response = post.alteraLinha(body['name'], body['valor'])
+            else:
+                response = "HTTP/1.1 404 Nao foi encontrato o arquivo\n\n" + content
             
         elif split_request[0] == 'PUT':
             body = request.split('\r\n\r\n')
-            if( len(body) > 1 ):
-                id = []
-                nome = []
-                valor = []
-                linhas = body[1].split('\n')[1:]
-                for linha in linhas:
-                    if(len(linha.split(SEPARADOR)) > 1):
-                        id.append(linha.split(SEPARADOR)[0])
-                        nome.append(linha.split(SEPARADOR)[1])
-                        valor.append(linha.split(SEPARADOR)[2])
-                put.createFile(id, nome, valor)
-            
-            response = "HTTP/1.1 200 OK\n\n" + content
+            if(len(body) > 1):
+                body = json.loads(body[1])
+                response = put.createFile(body['name'], body['content'])
+            else:
+                response = "HTTP/1.1 404 Nao foi encontrato o arquivo\n\n" + content
+                
         elif split_request[0] == 'DELETE':
             
             response = "HTTP/1.1 200 OK\n\n" + content

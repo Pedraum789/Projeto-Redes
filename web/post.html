@@ -8,21 +8,19 @@
 </head>
 <body>
     <form>
-        <input type="text" id="id" name="id">
-        <input type="text" id="name" name="name">
-        <input type="text" id="valor" name="valor">
+        <input type="text" id="name" name="Nome do arquivo:">
+        <input type="text" id="content" name="Conteudo:">
         <button onclick="sendPost()">Enviar</button>
     </form>
 
     <script>
         function sendPost(){
-            var id = document.querySelector("#id").value;
             var name = document.querySelector("#name").value;
-            var valor = document.querySelector("#valor").value;
+            var content = document.querySelector("#content").value;
             
             let resquest = new XMLHttpRequest()
             resquest.open("POST", "http://localhost:8080", false)
-            resquest.send(JSON.stringify({"id":id, "name":name, "valor": valor}))
+            resquest.send(JSON.stringify({"name":name, "content":content}))
         }
     </script>
 

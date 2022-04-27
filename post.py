@@ -1,14 +1,10 @@
-import pandas as pd
 
-def alteraLinha(id, nome, valor):
+def alteraLinha(name, content):
     try:
-        data = {
-            "id": [id], 
-            "nome": [nome], 
-            "valor":[valor]
-        }
-        df = pd.DataFrame(data)
-        df.to_csv("produtos.csv", mode="a", index=False, header=False,line_terminator='\n')
+        with open(name, 'a') as f:
+            f.seek(0)
+            f.write(content)
+            return "HTTP/1.1 200 OK\n\n"
     except:
-      return  print("Arquivo fora do padrao ou desconhecido")
+        return "HTTP/1.1 500 ERRO AO ADICIONAR NO ARQUIVO\n\n"
     
