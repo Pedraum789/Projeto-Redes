@@ -8,7 +8,7 @@ REQUESTS = {
     "GET": "/index.html", 
     "POST": "/post.html", 
     "PUT": "/put.html", 
-    "DELETE": "/post.html"
+    "DELETE": "/delete.html"
     }
 
 SEPARADOR = ';'
@@ -59,23 +59,35 @@ while True:
         elif split_request[0] == 'POST':
             body = request.split('\r\n\r\n')
             if( len(body) > 1 ):
-                body = json.loads(body[1])
-                response = post.alteraLinha(body['name'], body['valor'])
+                try:
+                    body = json.loads(body[1])
+                    response = post.alteraLinha(body['name'], body['content'])
+                except:
+                    response = "HTTP/1.1 406 Nao foi aceito o tamanho do arquivo\n\n"
             else:
                 response = "HTTP/1.1 404 Nao foi encontrato o arquivo\n\n" + content
             
         elif split_request[0] == 'PUT':
             body = request.split('\r\n\r\n')
             if(len(body) > 1):
-                body = json.loads(body[1])
-                response = put.createFile(body['name'], body['content'])
+                try:
+                    body = json.loads(body[1])
+                    response = put.createFile(body['name'], body['content'])
+                except:
+                    response = "HTTP/1.1 406 Nao foi aceito o tamanho do arquivo\n\n"
             else:
                 response = "HTTP/1.1 404 Nao foi encontrato o arquivo\n\n" + content
                 
         elif split_request[0] == 'DELETE':
-            
-            response = "HTTP/1.1 200 OK\n\n" + content
-            #delete.deletaArquivo()
+            body = request.split('\r\n\r\n')
+            if(len(body) > 1):
+                try:
+                    body = json.loads(body[1])
+                    response = put.createFile(body['name'])
+                except:
+                    response = "HTTP/1.1 406 Nao foi aceito o tamanho do arquivo\n\n"
+            else:
+                response = "HTTP/1.1 404 Nao foi encontrato o arquivo\n\n" + content
         else:
             print("Comando não pode ser interpretado por esse servidor!")
             response = ("ERRO! Servidor não reconhece esse comando!").encode()

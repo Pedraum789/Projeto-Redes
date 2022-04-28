@@ -1,11 +1,11 @@
 import os
 
-def deletaArquivo():
+def deletaArquivo(name):
     try:
-        path = "C:\Projeto-Redes"
-        dir = os.listdir(path)
-        for file in dir:
-            if file == "produtos.csv":
-                os.remove(file)
+        if os.path.exists(name):
+            os.remove(name)
+            return "HTTP/1.1 200 OK\n\n"
+        else:
+            return "HTTP/1.1 404 Arquivo não encontrado\n\n"
     except:
         return print("Arquivo nao encontrdo!")

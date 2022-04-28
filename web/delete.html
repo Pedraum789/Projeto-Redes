@@ -4,31 +4,29 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>POST</title>
+    <title>DELETE</title>
 </head>
 <body>
     <form>
         <h2>Nome do arquivo:</h2>
         <input type="text" id="name" name="name">
-        <br>
-        <h2>Conteudo a ser adicionado</h2>
-        <input type="text" id="content" name="content">
-        <button onclick="sendPost()">Enviar</button>
+        <button onclick="sendDelete()">Enviar</button>
     </form>
 
     <script>
-        function sendPost(){
+        function sendDelete(){
             var name = document.querySelector("#name").value;
-            var content = document.querySelector("#content").value;
             
             let resquest = new XMLHttpRequest()
-            resquest.open("POST", "http://localhost:8080", false)
+            resquest.open("DELETE", "http://localhost:8080")
+            xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
 
             xhr.onload = function () {
                 alert(xhr.status + " " + xhr.statusText);
             };
 
-            resquest.send(JSON.stringify({"name":name, "content":content}))
+            resquest.send(JSON.stringify({"name":name}))
         }
     </script>
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html> 
 <html> 
  <head> 
-  <title> Ajax JavaScript File Upload Example </title> 
+  <title> PUT </title> 
  </head> 
  <body>
   <!-- HTML5 Input Form Elements -->
@@ -23,12 +23,18 @@
         }
 
         const jsonString = JSON.stringify(toSend)
-        const xhr = new XMLHttpRequest()
 
+        
+        const xhr = new XMLHttpRequest()
         xhr.open("PUT", "http://localhost:8080")
         xhr.setRequestHeader("Content-Type", "application/json");
-        xhr.send(jsonString);
+        xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
 
+        xhr.onload = function () {
+          alert(xhr.status + " " + xhr.statusText);
+        };
+        
+        xhr.send(jsonString)
     };
 
     fileReader.readAsText(fileToLoad, "UTF-8");
