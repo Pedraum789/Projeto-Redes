@@ -12,5 +12,5 @@ def alteraLinha(name, content):
         else:
             return "HTTP/1.1 404 Arquivo não encontrado\n\n"
     except:
-        return "HTTP/1.1 500 ERRO AO ADICIONAR NO ARQUIVO\n\n"
+        return "HTTP/1.1 500 Erro ao editar o arquivo\n\n"
     

@@ -89,7 +89,7 @@ while True:
                     response = "HTTP/1.1 406 Nao foi aceito o tamanho do arquivo\n\n"
             else:
                 print("Body NAO ACEITO!")
-                response = "HTTP/1.1 404 Nao foi encontrato o arquivo\n\n" + content
+                response = "HTTP/1.1 404 Arquivo nao encontrado\n\n" + content
                 
         elif split_request[0] == 'DELETE':
             print("Executando metodo DELETE...")
@@ -100,7 +100,7 @@ while True:
                     body = json.loads(body[1])
                     response = delete.deletaArquivo(body['name'])
                 except:
-                    response = "HTTP/1.1 406 Nao foi aceito o tamanho do arquivo\n\n"
+                    response = "HTTP/1.1 500 Erro ao deletar arquivo\n\n"
             else:
                 print("Body NAO ACEITO!")
                 response = "HTTP/1.1 404 Nao foi encontrato o arquivo\n\n" + content

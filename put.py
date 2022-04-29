@@ -10,4 +10,4 @@ def createFile(name, content):
             f.write(content)
             return "HTTP/1.1 201 Arquivo criado ou substituido\n\n"
     except:
-        return "HTTP/1.1 500 Erro ao criar o arquivo\n\n"
+        return "HTTP/1.1 500 Erro ao criar/substituir o arquivo\n\n"
