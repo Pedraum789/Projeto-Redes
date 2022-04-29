@@ -21,14 +21,14 @@
             var name = document.querySelector("#name").value;
             var content = document.querySelector("#content").value;
             
-            let resquest = new XMLHttpRequest()
-            resquest.open("POST", "http://localhost:8080", false)
+            let xhr = new XMLHttpRequest()
+            xhr.open("POST", "http://localhost:8080", false)
 
             xhr.onload = function () {
                 alert(xhr.status + " " + xhr.statusText);
             };
 
-            resquest.send(JSON.stringify({"name":name, "content":content}))
+            xhr.send(JSON.stringify({"name":name, "content":content}))
         }
     </script>
 
