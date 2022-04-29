@@ -17,8 +17,8 @@
         function sendDelete(){
             var name = document.querySelector("#name").value;
             
-            let resquest = new XMLHttpRequest()
-            resquest.open("DELETE", "http://localhost:8080")
+            let xhr = new XMLHttpRequest()
+            xhr.open("DELETE", "http://localhost:8080")
             xhr.setRequestHeader("Content-Type", "application/json");
             xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
 
@@ -26,7 +26,7 @@
                 alert(xhr.status + " " + xhr.statusText);
             };
 
-            resquest.send(JSON.stringify({"name":name}))
+            xhr.send(JSON.stringify({"name":name}))
         }
     </script>
 
