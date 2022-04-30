@@ -1,6 +1,6 @@
 # Projeto-Redes
 Projeto desenvolvido por:
-* Pedro Henrique Guilherme Sanchez 22120069-2
+* Pedro Henrique Guilherme Sanchez 22120069-4
 * Pedro Henrique Braga  22.120.064-5
 * Gustavo Velecico 22.120.044-7
 
