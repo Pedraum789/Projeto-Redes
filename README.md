@@ -2,7 +2,7 @@
 Projeto desenvolvido por:
 * Pedro Henrique Guilherme Sanchez 22120069-2
 * Pedro Henrique Braga  22.120.064-5
-* Gustavo Velecico
+* Gustavo Velecico 22.120.044-7
 
 
 # Metodo GET
