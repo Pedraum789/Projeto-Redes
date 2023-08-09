@@ -9,7 +9,7 @@ Projeto desenvolvido por:
 
 | URL | DESCRICAO |
 | ------------------- | ------------------- |
-| http://localhost:8080/index.html ou http://localhost:8080 | Recebe a pagina HTML principal com os links para os metodos **POST**, **PUT** e **DELETE** |
+| http://localhost:8080/index.html :white_large_square: ou http://localhost:8080 | Recebe a pagina HTML principal com os links para os metodos **POST**, **PUT** e **DELETE** |
 | http://localhost:8080/post.html | Pagina HTML de execucao do metodo **POST** |
 | http://localhost:8080/put.html | Pagina HTML de execucao do metodo **PUT** |
 | http://localhost:8080/delete.html | Pagina HTML de execucao do metodo **DELETE** |
